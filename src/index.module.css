@@ -14,7 +14,14 @@ code {
     monospace;
 }
 button{
+  border: none;
+  padding: 4px;
   border-radius: 5px;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+}
+button:hover,
+button:active{
+  box-shadow: rgba(138, 43, 226, 0.75) 0px 5px 15px 0px;
 }
 ul{
   padding: 0;

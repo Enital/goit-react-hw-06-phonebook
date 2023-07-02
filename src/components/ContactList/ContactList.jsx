@@ -19,11 +19,16 @@ function ContactList() {
                 <h2>Contacts</h2>
                 <ul>
                     {contacts.map(({ id, name, number }) => {                    
-                        return (
-                            <li key={id} className={css.li}>
-                                <span>{name}: {number}</span>
-                            <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>Delete contact</button>
-                        </li>
+                        return (<>
+                                <li key={id} className={css.li}>
+                                    <div className={css.contact}>
+                                        <span className={css.contactName}>{name}:</span>
+                                        <span>{number}</span>
+                                    </div>
+                                    <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>Delete contact</button>
+                                </li>
+                                
+                            </>
                         )
                     })}
                 </ul>
