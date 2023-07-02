@@ -1,8 +1,13 @@
-import React from "react";
+// import React, { useMemo } from "react";
 import css from './filter.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+// import getStorage from "redux-persist/es/storage/getStorage";
 
 function Filter() {
+    // const contacts = getStorage();
+    // const filterContacts = ()=> {
+    //     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+    // };
     return (
         <>
             <h3>Find contacts by name</h3>
