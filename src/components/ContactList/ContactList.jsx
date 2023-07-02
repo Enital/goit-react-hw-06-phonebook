@@ -10,7 +10,7 @@ import css from './contactList.module.css'
 
 function ContactList() {
     const dispatch = useDispatch();
-    const [isAddContact, setIsAddContact] = useState(false);
+    // const [isAddContact, setIsAddContact] = useState(false);
 
     const { contacts } = store.getState();
     console.log(contacts);
@@ -21,9 +21,9 @@ function ContactList() {
     const deleteContactBtn = id => {
         dispatch(deleteContact(id));
     }
-    useEffect(() => {
+    // useEffect(() => {
         
-    },[isAddContact])
+    // },[isAddContact])
     if (contacts) {
         return (
             <>
