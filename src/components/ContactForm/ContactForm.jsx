@@ -1,14 +1,22 @@
 import {useState} from "react";
 import { nanoid } from "nanoid";
 
-import css from './contactForm.module.css'
 
-function ContactForm({onSubmit}) {
+import css from './contactForm.module.css'
+import { useDispatch } from "react-redux";
+import { addContact } from "redux/contactSlice";
+import { store } from "redux/store";
+
+function ContactForm({ onSubmit }) {
+    const dispatch = useDispatch();
+
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
+    // const [contact, setContact] = useState('');
 
     const handleNameChange = event => {
-        setName( event.currentTarget.value );
+        setName(event.currentTarget.value)
+        // console.log( event.currentTarget.value );
     };
 
     const handleNumberSubmit = event => {
@@ -18,14 +26,22 @@ function ContactForm({onSubmit}) {
     const reset = () => {
         setName('');
         setNumber('');
+        // setContact('');
     }
     
     const handleSubmit = event => {
         event.preventDefault();
-        onSubmit({ id: nanoid(), name: name, number: number });
+        
+        const contact = { id: nanoid(), name: name, number: number };
+        console.log(contact)
+        dispatch(addContact(contact));
+        console.log(store.getState());
         reset();
     };
 
+    // const handleSubmit = () => {
+    //     return
+    // }
     return (
         <form onSubmit={handleSubmit} className={css.form}>
             <label className={css.label}>Name</label>

@@ -2,7 +2,7 @@ import React from "react";
 import css from './filter.module.css';
 import PropTypes from 'prop-types';
 
-function Filter({ filter, setFilter }) {
+function Filter() {
     return (
         <>
             <h3>Find contacts by name</h3>
@@ -10,8 +10,8 @@ function Filter({ filter, setFilter }) {
                 <input
                     type="text"
                     name='filter'
-                    value={filter}
-                    onChange={event => { setFilter(event.currentTarget.value) }}
+                    // value={filter}
+                    // onChange={event => { setFilter(event.currentTarget.value) }}
                     className={css.input}
                     />
                 </label>
@@ -20,7 +20,7 @@ function Filter({ filter, setFilter }) {
 }
 export default Filter;
 
-Filter.propTypes = {
-    filter: PropTypes.string.isRequired,
-    setFilter: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//     filter: PropTypes.string.isRequired,
+//     setFilter: PropTypes.func.isRequired,
+// };

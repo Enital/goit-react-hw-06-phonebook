@@ -1,9 +1,22 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import { useEffect } from "react";
+// import PropTypes from 'prop-types';
+import { store } from "redux/store";
 
 import css from './contactList.module.css'
 
-function ContactList ( {contacts, deleteContact }) {
+function ContactList() {
+    const [isAddContact, setIsAddContact] = useState(false);
+
+    const { contacts } = store.getState();
+    console.log(contacts);
+    const deleteContact = id => {
+        contacts.filter(contact => contact.id !== id);
+    }
+    useEffect(() => {
+        
+    },[isAddContact])
     if (contacts) {
         return (
             <>
@@ -25,13 +38,13 @@ function ContactList ( {contacts, deleteContact }) {
 
 export default ContactList;
 
-ContactList.propTypes = {
-    contacts: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            number: PropTypes.string.isRequired,
-        })
-    ),
-    deleteContact: PropTypes.func.isRequired,
-}
+// ContactList.propTypes = {
+//     contacts: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             id: PropTypes.string.isRequired,
+//             name: PropTypes.string.isRequired,
+//             number: PropTypes.string.isRequired,
+//         })
+//     ),
+//     deleteContact: PropTypes.func.isRequired,
+// }
