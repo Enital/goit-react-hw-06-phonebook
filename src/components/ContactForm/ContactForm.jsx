@@ -1,15 +1,15 @@
 import {useState} from "react";
 import { nanoid } from "nanoid";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from "redux/contactSlice";
+// import { store } from "redux/store";
 
 import css from './contactForm.module.css'
-import { useDispatch } from "react-redux";
-import { addContact } from "redux/contactSlice";
-import { store } from "redux/store";
+import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 
-function ContactForm({ onSubmit }) {
+function ContactForm() {
     const dispatch = useDispatch();
-
+    const contacts = useSelector(state => state.contacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     // const [contact, setContact] = useState('');
@@ -29,13 +29,30 @@ function ContactForm({ onSubmit }) {
         // setContact('');
     }
     
+
     const handleSubmit = event => {
         event.preventDefault();
         
-        const contact = { id: nanoid(), name: name, number: number };
-        console.log(contact)
-        dispatch(addContact(contact));
-        console.log(store.getState());
+        if (contacts) {
+            const names = contacts.map(contact => contact.name);
+    
+            const lowerCaseName = name.toLowerCase();
+            const lowerCaseNames = names.map(name => name.toLowerCase());
+            if (lowerCaseNames.includes(lowerCaseName)) {
+                alert(`${name} is already in Contacts!`);
+                return;
+            }
+    
+            const contact = { id: nanoid(), name: name, number: number };
+                console.log(contact)
+            dispatch(addContact(contact));
+    
+        }
+        else {
+            const contact = { id: nanoid(), name: name, number: number };
+                console.log(contact)
+            dispatch(addContact(contact));
+        }
         reset();
     };
 
