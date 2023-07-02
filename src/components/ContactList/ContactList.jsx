@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+// import { useState } from "react";
+// import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/contactSlice";
 // import PropTypes from 'prop-types';
