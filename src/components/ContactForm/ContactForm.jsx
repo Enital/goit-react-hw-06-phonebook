@@ -2,6 +2,7 @@ import {useState} from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/contactSlice";
+import { Notify } from 'notiflix';
 
 import css from './contactForm.module.css'
 
@@ -34,7 +35,7 @@ function ContactForm() {
             const lowerCaseName = name.toLowerCase();
             const lowerCaseNames = names.map(name => name.toLowerCase());
             if (lowerCaseNames.includes(lowerCaseName)) {
-                alert(`${name} is already in Contacts!`);
+                Notify.failure(`${name} is already in contacts`);
                 return;
             }
     
