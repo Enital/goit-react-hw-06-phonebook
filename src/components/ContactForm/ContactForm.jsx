@@ -39,7 +39,6 @@ function ContactForm() {
             }
     
             const contact = { id: nanoid(), name: name, number: number };
-                console.log(contact)
             dispatch(addContact(contact));
     
         }
