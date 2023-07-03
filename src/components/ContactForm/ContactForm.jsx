@@ -2,21 +2,17 @@ import {useState} from "react";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/contactSlice";
-// import { store } from "redux/store";
 
 import css from './contactForm.module.css'
-import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 
 function ContactForm() {
     const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    // const [contact, setContact] = useState('');
 
     const handleNameChange = event => {
         setName(event.currentTarget.value)
-        // console.log( event.currentTarget.value );
     };
 
     const handleNumberSubmit = event => {
@@ -26,7 +22,6 @@ function ContactForm() {
     const reset = () => {
         setName('');
         setNumber('');
-        // setContact('');
     }
     
 
@@ -56,9 +51,6 @@ function ContactForm() {
         reset();
     };
 
-    // const handleSubmit = () => {
-    //     return
-    // }
     return (
         <form onSubmit={handleSubmit} className={css.form}>
             <label className={css.label}>Name</label>
@@ -85,7 +77,7 @@ function ContactForm() {
                     className={css.input}
             />
             
-            <button type="submit" className={css.button}>Add contact</button>
+            <button type="submit" className={css.addButton}>Add contact</button>
         </form>
     )
 }

@@ -7,8 +7,9 @@ function ContactList() {
     const dispatch = useDispatch();
 
     const contacts = useSelector(state => state.contacts);
-    // console.log(contacts);
-    
+    const filter = useSelector(state=> state.filter)
+
+    const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
     const deleteContactBtn = id => {
         dispatch(deleteContact(id));
     }
@@ -18,11 +19,11 @@ function ContactList() {
             <>
                 <h2>Contacts</h2>
                 <ul>
-                    {contacts.map(({ id, name, number }) => {                    
+                    {filteredContacts.map(({ id, name, number }) => {                    
                         return (<>
                                 <li key={id} className={css.li}>
                                     <div className={css.contact}>
-                                        <span className={css.contactName}>{name}:</span>
+                                        <span className={css.contactName}>{name}</span>
                                         <span>{number}</span>
                                     </div>
                                     <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>Delete contact</button>
@@ -38,14 +39,3 @@ function ContactList() {
 }
 
 export default ContactList;
-
-// ContactList.propTypes = {
-//     contacts: PropTypes.arrayOf(
-//         PropTypes.shape({
-//             id: PropTypes.string.isRequired,
-//             name: PropTypes.string.isRequired,
-//             number: PropTypes.string.isRequired,
-//         })
-//     ),
-//     deleteContact: PropTypes.func.isRequired,
-// }
